@@ -13,6 +13,7 @@ function App() {
 			<main>
 				<Routes>
 					<Route path="/" element={<ArticleList />}></Route>
+					<Route path="/articles/:article_id"></Route>
 				</Routes>
 			</main>
 			<footer>

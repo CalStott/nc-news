@@ -22,9 +22,9 @@ export const ArticleList = () => {
 	}, []);
 
 	return isError ? (
-		<p>There has been an error!</p>
+		<p className="error-display">There has been an error!</p>
 	) : isLoading ? (
-		<p>Loading Articles!</p>
+		<p className="loading-display">Loading Articles!</p>
 	) : (
 		<>
 			{articles.map((article) => {

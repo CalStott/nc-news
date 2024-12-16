@@ -25,6 +25,14 @@ footer {
 	border-top: double;
 }
 
+.loading-display {
+	text-align: center;
+}
+
+.error-display {
+	text-align: center;
+}
+
 .article-card {
 	margin: 2rem;
 	padding: 1rem;
