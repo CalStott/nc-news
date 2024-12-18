@@ -5,14 +5,19 @@ const ncNews = axios.create({
 });
 
 const getArticles = () => {
-	return ncNews
-		.get('/articles')
-		.then(({ data: { articles } }) => {
-			return articles;
-		})
-		.catch((err) => {
-			console.log(err, '<-- err in getArticles');
-		});
+	return ncNews.get('/articles').then(({ data: { articles } }) => articles);
 };
 
-export { getArticles };
+const getArticleById = (article_id) => {
+	return ncNews
+		.get(`/articles/${article_id}`)
+		.then(({ data: { article } }) => article);
+};
+
+const getCommentsByArticleId = (article_id) => {
+	return ncNews
+		.get(`/articles/${article_id}/comments`)
+		.then(({ data: { comments } }) => comments);
+};
+
+export { getArticles, getArticleById, getCommentsByArticleId };
