@@ -27,12 +27,18 @@ export const CommentsList = ({ article_id }) => {
 		<>
 			<section className="article-comments">
 				<h2>Comments</h2>
+
 				{allComments.length < 1 ? (
 					<p>There are no comments on this article</p>
 				) : (
-					allComments.map((comment) => {
-						return <CommentsCard comment={comment} key={comment.comment_id} />;
-					})
+					<>
+						<p>Total comments: {allComments.length}</p>
+						{allComments.map((comment) => {
+							return (
+								<CommentsCard comment={comment} key={comment.comment_id} />
+							);
+						})}
+					</>
 				)}
 			</section>
 		</>

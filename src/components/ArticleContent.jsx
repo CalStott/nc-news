@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getArticleById } from '../api';
+import { ArticleVoting } from './ArticleVoting';
 
 export const ArticleContent = ({ article_id }) => {
 	const [article, setArticle] = useState({});
@@ -28,10 +29,12 @@ export const ArticleContent = ({ article_id }) => {
 				<h2>{article.title}</h2>
 				<p className="single-article-author">{article.author}</p>
 			</div>
+
 			<div className="article-main">
 				<img src={article.article_img_url} alt={article.title} />
 				<p className="single-article-body">{article.body}</p>
 			</div>
+			<ArticleVoting article_id={article_id} votes={article.votes} />
 		</section>
 	);
 };
