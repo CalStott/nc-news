@@ -20,4 +20,17 @@ const getCommentsByArticleId = (article_id) => {
 		.then(({ data: { comments } }) => comments);
 };
 
-export { getArticles, getArticleById, getCommentsByArticleId };
+const patchArticleVotes = (article_id, votes) => {
+	return ncNews
+		.patch(`/articles/${article_id}`, { inc_votes: votes })
+		.then(({ data: { article } }) => {
+			return article;
+		});
+};
+
+export {
+	getArticles,
+	getArticleById,
+	getCommentsByArticleId,
+	patchArticleVotes,
+};
