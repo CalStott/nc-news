@@ -7,15 +7,11 @@ export const ArticleVoting = ({ article_id, votes }) => {
 
 	const handleClick = (vote) => {
 		setIsError(false);
-		vote === -1
-			? setVoteValue((currVoteValue) => currVoteValue - 1)
-			: setVoteValue((currVoteValue) => currVoteValue + 1);
+		setVoteValue((currVoteValue) => currVoteValue + vote);
 
 		patchArticleVotes(article_id, vote).catch((err) => {
 			setIsError(true);
-			vote === -1
-				? setVoteValue((currVoteValue) => currVoteValue + 1)
-				: setVoteValue((currVoteValue) => currVoteValue - 1);
+			setVoteValue((currVoteValue) => currVoteValue - vote);
 		});
 	};
 
