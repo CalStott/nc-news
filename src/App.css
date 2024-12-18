@@ -45,3 +45,21 @@ footer {
 	text-decoration: underline;
 	margin-bottom: 1rem;
 }
+
+.single-article {
+	display: grid;
+}
+
+.single-article-author {
+	margin-bottom: 20px;
+}
+
+.single-article img {
+	height: auto;
+	width: 500px;
+	margin-bottom: 20px;
+}
+
+.single-article-body {
+	font-size: 20px;
+}
