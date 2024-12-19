@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
-import { getCommentsByArticleId, postCommentOnArticle } from '../api';
+import {
+	getCommentsByArticleId,
+	postCommentOnArticle,
+	deleteCommentById,
+} from '../api';
 import { CommentsCard } from './CommentsCard';
 
 export const CommentsList = ({ article_id }) => {
@@ -42,6 +46,13 @@ export const CommentsList = ({ article_id }) => {
 		setInputComment('');
 	};
 
+	const handleDelete = (e) => {
+		const deletedCommentId = e.target.value;
+		deleteCommentById(deletedCommentId).then(() => {
+			window.location.reload(true);
+		});
+	};
+
 	return isError ? (
 		<p className="error-display">There has been an error!</p>
 	) : isLoading ? (
@@ -51,7 +62,7 @@ export const CommentsList = ({ article_id }) => {
 			<section className="article-comments">
 				<h2>Comments</h2>
 
-				{allComments.length < 1 ? (
+				{allComments.length === 0 ? (
 					<p>There are no comments on this article</p>
 				) : (
 					<p>Total comments: {allComments.length}</p>
@@ -82,7 +93,13 @@ export const CommentsList = ({ article_id }) => {
 					)}
 				</form>
 				{allComments.map((comment) => {
-					return <CommentsCard comment={comment} key={comment.comment_id} />;
+					return (
+						<CommentsCard
+							comment={comment}
+							handleDelete={handleDelete}
+							key={comment.comment_id}
+						/>
+					);
 				})}
 			</section>
 		</>

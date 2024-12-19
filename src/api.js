@@ -39,10 +39,15 @@ const postCommentOnArticle = (article_id, body) => {
 		});
 };
 
+const deleteCommentById = (comment_id) => {
+	return ncNews.delete(`/comments/${comment_id}`);
+};
+
 export {
 	getArticles,
 	getArticleById,
 	getCommentsByArticleId,
 	patchArticleVotes,
 	postCommentOnArticle,
+	deleteCommentById,
 };
