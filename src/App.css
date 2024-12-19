@@ -166,3 +166,9 @@ footer {
 	height: 100%;
 	stroke: #9fa4aa;
 }
+
+.comment-area {
+	resize: none;
+	width: 400px;
+	height: 70px;
+}

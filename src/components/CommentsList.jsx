@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
-import { getCommentsByArticleId } from '../api';
+import { getCommentsByArticleId, postCommentOnArticle } from '../api';
 import { CommentsCard } from './CommentsCard';
 
 export const CommentsList = ({ article_id }) => {
 	const [allComments, setAllComments] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const [isError, setIsError] = useState(false);
+	const [inputComment, setInputComment] = useState('');
+	const [isPosted, setIsPosted] = useState(false);
+	const [isCommentError, setIsCommentError] = useState(false);
 
 	useEffect(() => {
 		setIsLoading(true);
@@ -19,6 +22,26 @@ export const CommentsList = ({ article_id }) => {
 			});
 	}, [article_id]);
 
+	const handleChange = (e) => {
+		setInputComment(e.target.value);
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		setIsCommentError(false);
+		setIsPosted(true);
+		postCommentOnArticle(article_id, inputComment)
+			.then((newComment) => {
+				setAllComments((currComments) => [newComment, ...currComments]);
+				setIsPosted(false);
+			})
+			.catch((err) => {
+				setIsCommentError(true);
+				setIsPosted(false);
+			});
+		setInputComment('');
+	};
+
 	return isError ? (
 		<p className="error-display">There has been an error!</p>
 	) : isLoading ? (
@@ -31,15 +54,36 @@ export const CommentsList = ({ article_id }) => {
 				{allComments.length < 1 ? (
 					<p>There are no comments on this article</p>
 				) : (
-					<>
-						<p>Total comments: {allComments.length}</p>
-						{allComments.map((comment) => {
-							return (
-								<CommentsCard comment={comment} key={comment.comment_id} />
-							);
-						})}
-					</>
+					<p>Total comments: {allComments.length}</p>
 				)}
+
+				<form onSubmit={handleSubmit}>
+					<label className="comment-area">
+						Post a comment: <br />
+						<textarea
+							className="comment-area"
+							name="body"
+							maxLength={180}
+							onChange={handleChange}
+							value={inputComment}
+							required
+						></textarea>
+					</label>
+					<br />
+					{isCommentError ? (
+						<p>There has been an error, please try again!</p>
+					) : null}
+					{isPosted ? (
+						<p>Posting!</p>
+					) : (
+						<button className="comment-button" type="submit">
+							Add comment
+						</button>
+					)}
+				</form>
+				{allComments.map((comment) => {
+					return <CommentsCard comment={comment} key={comment.comment_id} />;
+				})}
 			</section>
 		</>
 	);
