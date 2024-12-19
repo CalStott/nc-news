@@ -4,8 +4,10 @@ const ncNews = axios.create({
 	baseURL: 'https://calebs-backend-news-project.onrender.com/api',
 });
 
-const getArticles = () => {
-	return ncNews.get('/articles').then(({ data: { articles } }) => articles);
+const getArticles = (topic) => {
+	return ncNews
+		.get('/articles', { params: { topic } })
+		.then(({ data: { articles } }) => articles);
 };
 
 const getArticleById = (article_id) => {
@@ -43,6 +45,12 @@ const deleteCommentById = (comment_id) => {
 	return ncNews.delete(`/comments/${comment_id}`);
 };
 
+const getTopics = () => {
+	return ncNews.get('/topics').then(({ data: { topics } }) => {
+		return topics;
+	});
+};
+
 export {
 	getArticles,
 	getArticleById,
@@ -50,4 +58,5 @@ export {
 	patchArticleVotes,
 	postCommentOnArticle,
 	deleteCommentById,
+	getTopics,
 };

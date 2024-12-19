@@ -15,7 +15,9 @@ header h1 {
 }
 
 header nav {
+	display: flex;
 	font-size: 20px;
+	justify-content: space-around;
 }
 
 header p {
@@ -48,6 +50,18 @@ footer {
 .article-card p {
 	text-decoration: underline;
 	margin-bottom: 1rem;
+}
+
+.topic-card {
+	margin: 2rem;
+	padding: 1rem;
+	display: inline-block;
+	border: solid black 2px;
+	width: 250px;
+}
+
+.topic-card h2 {
+	text-align: center;
 }
 
 .single-article {

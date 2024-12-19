@@ -4,6 +4,7 @@ import { Footer } from './components/Footer.jsx';
 import { Routes, Route } from 'react-router';
 import { ArticleList } from './components/ArticleList.jsx';
 import { SingleArticle } from './components/SingleArticle.jsx';
+import { TopicList } from './components/TopicList.jsx';
 
 function App() {
 	return (
@@ -18,6 +19,8 @@ function App() {
 						path="/articles/:article_id"
 						element={<SingleArticle />}
 					></Route>
+					<Route path="/topics" element={<TopicList />}></Route>
+					<Route path="/:topic" element={<ArticleList />}></Route>
 				</Routes>
 			</main>
 			<footer>
