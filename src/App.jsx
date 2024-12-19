@@ -20,7 +20,7 @@ function App() {
 						element={<SingleArticle />}
 					></Route>
 					<Route path="/topics" element={<TopicList />}></Route>
-					<Route path="/:topic" element={<ArticleList />}></Route>
+					<Route path="/topics/:topic" element={<ArticleList />}></Route>
 				</Routes>
 			</main>
 			<footer>
