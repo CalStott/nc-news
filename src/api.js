@@ -4,9 +4,9 @@ const ncNews = axios.create({
 	baseURL: 'https://calebs-backend-news-project.onrender.com/api',
 });
 
-const getArticles = (topic) => {
+const getArticles = (topic, sort_by, order) => {
 	return ncNews
-		.get('/articles', { params: { topic } })
+		.get('/articles', { params: { topic, sort_by, order } })
 		.then(({ data: { articles } }) => articles);
 };
 

@@ -124,6 +124,10 @@ footer {
 	margin: 10px;
 }
 
+.article-comments form {
+	text-align: center;
+}
+
 .task {
 	position: relative;
 	color: #2e2e2f;
@@ -187,6 +191,6 @@ footer {
 
 .comment-area {
 	resize: none;
-	width: 400px;
+	width: auto;
 	height: 70px;
 }

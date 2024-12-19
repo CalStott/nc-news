@@ -7,7 +7,7 @@ export const TopicCard = ({ topic }) => {
 	return (
 		<div className="topic-card">
 			<div>
-				<Link to={{ pathname: `/${slug}` }}>
+				<Link to={{ pathname: `/topics/${slug}` }}>
 					<h2>{firstLetter + slug.slice(1, slug.length)}</h2>
 				</Link>
 				<br />
