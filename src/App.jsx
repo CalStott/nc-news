@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router';
 import { ArticleList } from './components/ArticleList.jsx';
 import { SingleArticle } from './components/SingleArticle.jsx';
 import { TopicList } from './components/TopicList.jsx';
+import { ErrorPage } from './components/ErrorPage.jsx';
 
 function App() {
 	return (
@@ -21,6 +22,7 @@ function App() {
 					></Route>
 					<Route path="/topics" element={<TopicList />}></Route>
 					<Route path="/topics/:topic" element={<ArticleList />}></Route>
+					<Route path="*" element={<ErrorPage />}></Route>
 				</Routes>
 			</main>
 			<footer>

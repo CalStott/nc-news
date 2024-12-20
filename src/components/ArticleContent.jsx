@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getArticleById } from '../api';
 import { ArticleVoting } from './ArticleVoting';
+import { ErrorPage } from './ErrorPage';
 
 export const ArticleContent = ({ article_id }) => {
 	const [article, setArticle] = useState({});
@@ -14,13 +15,13 @@ export const ArticleContent = ({ article_id }) => {
 				setArticle(article);
 				setIsLoading(false);
 			})
-			.catch((err) => {
+			.catch(() => {
 				setIsError(true);
 			});
 	}, [article_id]);
 
 	return isError ? (
-		<p className="error-display">There has been an error!</p>
+		<ErrorPage />
 	) : isLoading ? (
 		<p className="loading-display">Loading article!</p>
 	) : (

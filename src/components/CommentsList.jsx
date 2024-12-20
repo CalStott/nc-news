@@ -39,7 +39,7 @@ export const CommentsList = ({ article_id }) => {
 				setAllComments((currComments) => [newComment, ...currComments]);
 				setIsPosted(false);
 			})
-			.catch((err) => {
+			.catch(() => {
 				setIsCommentError(true);
 				setIsPosted(false);
 			});
@@ -53,9 +53,7 @@ export const CommentsList = ({ article_id }) => {
 		});
 	};
 
-	return isError ? (
-		<p className="error-display">There has been an error!</p>
-	) : isLoading ? (
+	return isError ? null : isLoading ? (
 		<p className="loading-display">Loading comments!</p>
 	) : (
 		<>
