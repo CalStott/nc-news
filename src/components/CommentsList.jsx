@@ -34,16 +34,22 @@ export const CommentsList = ({ article_id }) => {
 		e.preventDefault();
 		setIsCommentError(false);
 		setIsPosted(true);
-		postCommentOnArticle(article_id, inputComment)
-			.then((newComment) => {
-				setAllComments((currComments) => [newComment, ...currComments]);
-				setIsPosted(false);
-			})
-			.catch(() => {
-				setIsCommentError(true);
-				setIsPosted(false);
-			});
-		setInputComment('');
+
+		if (inputComment.trim().length !== 0) {
+			postCommentOnArticle(article_id, inputComment)
+				.then((newComment) => {
+					setAllComments((currComments) => [newComment, ...currComments]);
+					setIsPosted(false);
+				})
+				.catch(() => {
+					setIsCommentError(true);
+					setIsPosted(false);
+				});
+			setInputComment('');
+		} else {
+			setIsCommentError(true);
+			setIsPosted(false);
+		}
 	};
 
 	const handleDelete = (e) => {
