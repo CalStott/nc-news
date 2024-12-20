@@ -45,6 +45,7 @@ footer {
 	display: inline-block;
 	border: solid black 2px;
 	width: 250px;
+	height: auto;
 }
 
 .article-card p {
@@ -191,6 +192,66 @@ footer {
 
 .comment-area {
 	resize: none;
-	width: auto;
-	height: 70px;
+	width: 75vw;
+	height: 10vh;
+}
+
+.article-sorting {
+	display: inline-block;
+}
+
+.sorting-label {
+	margin-left: 10px;
+}
+
+.sorting-label select {
+	margin-left: 10px;
+}
+
+.error-page h1 {
+	font-weight: 800;
+	color: dark;
+	text-align: center;
+	font-size: 8rem;
+	padding-top: 20px;
+
+	@media screen and (max-width: break) {
+		padding-left: 20px;
+		padding-right: 20px;
+		font-size: 2em;
+	}
+}
+
+.error-page p {
+	text-align: center;
+	font-size: 2.5rem;
+}
+
+.btn {
+	display: block;
+	font-weight: 400;
+	padding: 20px;
+	background-color: blue;
+	color: white;
+	width: 320px;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 1.2em;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	transition: all 0.2s linear;
+
+	@media screen and (max-width: break) {
+		margin: 0 auto;
+		margin-top: 60px;
+		margin-bottom: 50px;
+		width: 200px;
+	}
+
+	&:hover {
+		background-color: rgba(blue, 0.8);
+		transition: all 0.2s linear;
+	}
 }

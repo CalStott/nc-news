@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { getArticles } from '../api';
 import { ArticleCard } from './ArticleCard';
 import { useParams, useSearchParams } from 'react-router';
+import { ErrorPage } from './ErrorPage';
 
 export const ArticleList = () => {
 	const [articles, setArticles] = useState([]);
@@ -37,13 +38,13 @@ export const ArticleList = () => {
 	};
 
 	return isError ? (
-		<p className="error-display">There has been an error!</p>
+		<ErrorPage />
 	) : isLoading ? (
 		<p className="loading-display">Loading Articles!</p>
 	) : (
 		<>
 			<div className="article-sorting">
-				<label>
+				<label className="sorting-label">
 					Sort by:
 					<select name="sort_by" value={sortQuery} onChange={handleQueryChange}>
 						<option value="created_at">Date</option>
@@ -51,7 +52,7 @@ export const ArticleList = () => {
 						<option value="votes">Votes</option>
 					</select>
 				</label>
-				<label className="article-sorting">
+				<label className="sorting-label">
 					Order by:
 					<select name="order" value={orderQuery} onChange={handleQueryChange}>
 						<option value="desc">Descending</option>
